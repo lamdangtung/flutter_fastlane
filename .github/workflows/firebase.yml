@@ -30,10 +30,10 @@ jobs:
           flutter-version: '3.7.12'
           channel: 'stable'
       - run: flutter doctor -v
-      - run: bundle exec rake
       - name: Install Bundler
         run: gem install bundler
       - run: make update
+      - run: bundle exec rake
       - run: gem install fastlane
       - name: Add firebase_app_distribution
         run: make add_firebase_app_distribution
