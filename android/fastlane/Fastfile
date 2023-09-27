@@ -16,23 +16,28 @@
 default_platform(:android)
 
 platform :android do
-  desc "Runs all the tests"
-  lane :test do
-    gradle(task: "test")
-  end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
-  
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
-  end
-
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
-  end
+  desc "Upload Android App To Firebase Distribution"
+    lane :distribute_android_app do
+      Dir.chdir "../.." do
+            sh("sh", "increase_build_number.sh")
+            sh("flutter", "packages", "get")
+            sh("flutter", "clean")
+            sh("flutter", "build", "apk", "--release")
+          end
+      copy_artifacts(
+            artifacts: ['../build/app/outputs/flutter-apk/app-release.apk'],
+            target_path: './build/apk'
+          )
+      firebase_app_distribution(
+            app: "1:130967009682:android:3140d0bcb430273672e94b",
+            testers: "lamdt.nws@gmail.com",
+            apk_path: "./build/apk/app-release.apk",
+            android_artifact_type: "APK",
+            service_credentials_file: "../android/key/firebase-distribution-key.json",
+            groups: "dev"
+          )
+      # sh "your_script.sh"
+      # You can also use other beta testing services here
+    end
 end

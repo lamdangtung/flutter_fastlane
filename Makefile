@@ -1,6 +1,10 @@
-.PHONY: clean
+.PHONY: init-android update update-fastlane firebase
 
-bundle-update:
+init-android:
+	cd android/ bundle exec fastlane init
+update:
 	bundle update
-bundle-update-fastlane:
+update-fastlane:
 	bundle update fastlane
+firebase:
+	cd android/fastlane/ && bundle exec fastlane distribute_android_app
