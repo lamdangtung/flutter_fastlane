@@ -30,6 +30,11 @@ jobs:
           flutter-version: '3.7.12'
           channel: 'stable'
       - run: flutter doctor -v
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+      - run: bundle exec rake
       - name: Install Bundler
         run: gem install bundler
       - run: make update
