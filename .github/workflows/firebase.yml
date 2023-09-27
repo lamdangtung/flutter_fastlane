@@ -1,0 +1,35 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Firebase
+
+on:
+  push:
+    branches: [ "firebase" ]
+  pull_request:
+    branches: [ "firebase" ]
+
+jobs:
+  build_apk:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+      - run: java --version
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.12'
+          channel: 'stable'
+      - run: flutter doctor -v
+
+      - name: Build APK
+        working-directory: ${{ github.workspace }}
+        run: make firebase
