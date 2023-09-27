@@ -9,4 +9,4 @@ update-fastlane:
 firebase:
 	cd android/fastlane/ && bundle exec fastlane distribute_android_app
 add_firebase_app_distribution:
-	cd android/fastlane/ && bundle exec fastlane add_plugin firebase_app_distribution
+	cd android/fastlane/  && fastlane --version && fastlane add_plugin firebase_app_distribution && bundle exec fastlane add_plugin firebase_app_distribution
