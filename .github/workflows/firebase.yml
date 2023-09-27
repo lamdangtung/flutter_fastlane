@@ -30,6 +30,8 @@ jobs:
           flutter-version: '3.7.12'
           channel: 'stable'
       - run: flutter doctor -v
+      - name: Install Bundler
+        run: gem install bundler
       - run: make update
       - name: Build APK
         working-directory: ${{ github.workspace }}
