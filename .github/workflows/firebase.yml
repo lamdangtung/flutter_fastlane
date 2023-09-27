@@ -35,7 +35,7 @@ jobs:
       - run: make update
       - run: gem install fastlane
       - name: Add firebase_app_distribution
-        run: bundle exec fastlane add_plugin firebase_app_distribution
+        run: make add_firebase_app_distribution
       - name: Build APK
         working-directory: ${{ github.workspace }}
         run: make firebase
