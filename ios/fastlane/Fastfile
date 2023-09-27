@@ -1,0 +1,53 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Upload Android App To Firebase Distribution"
+      lane :distribute_android_app do
+        Dir.chdir "../.." do
+              sh("sh", "increase_build_number.sh")
+              sh("flutter", "packages", "get")
+              sh("flutter", "clean")
+              sh("flutter", "build", "ios", "--release", "--no-codesign")
+            end
+
+        # Todo
+        build_app(
+              workspace: "Runner.xcworkspace",
+              configuration: "Release-dev",
+              scheme: "dev",
+              export_options: {
+                provisioningProfiles: {
+                  "it.thoson.Test" => "ThoSon_Test_Dev"
+                },
+                method: "development",
+              },
+              silent: true,
+              clean: true,
+              output_directory: "build/api",
+              output_name: "app-dev.ipa",
+            )
+        firebase_app_distribution(
+              app: "1:130967009682:ios:0334742267ff43d472e94b",
+              testers: "lamdt.nws@gmail.com",
+              service_credentials_file: "../ios/Key/firebase-distribution-key.json",
+              groups: "dev"
+            )
+        # sh "your_script.sh"
+        # You can also use other beta testing services here
+      end
+end
