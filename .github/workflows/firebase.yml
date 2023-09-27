@@ -32,6 +32,7 @@ jobs:
       - run: flutter doctor -v
       - name: Install Bundler
         run: gem install bundler
+      - run: brew install fastlane
       - name: Add firebase_app_distribution
         run: bundle exec fastlane add_plugin firebase_app_distribution
       - run: make update
