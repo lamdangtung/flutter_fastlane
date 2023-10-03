@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.flutter_fastlane">
+    package="com.lamdt.flutter_fastlane">
    <application
         android:label="flutter_fastlane"
         android:name="${applicationName}"

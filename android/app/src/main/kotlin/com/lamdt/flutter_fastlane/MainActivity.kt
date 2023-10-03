@@ -1,4 +1,4 @@
-package com.example.flutter_fastlane
+package com.lamdt.flutter_fastlane
 
 import io.flutter.embedding.android.FlutterActivity
 
