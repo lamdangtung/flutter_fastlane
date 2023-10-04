@@ -1,4 +1,4 @@
-.PHONY: init-android update update-fastlane firebase add_firebase_app_distribution init-ios
+.PHONY: init-android update update-fastlane firebase add_firebase_app_distribution init-ios upload_app_android
 
 init-android:
 	cd android/ bundle exec fastlane init
@@ -11,6 +11,10 @@ update-fastlane:
 	bundle update fastlane
 firebase:
 	cd android/fastlane/ && bundle exec fastlane distribute_android_app
+
+upload_app_android:
+	cd android && bundle exec fastlane supply --aab ./build/aab/app-release.aab
+
 add_firebase_app_distribution_android:
 	cd android/fastlane/  && fastlane --version && fastlane add_plugin firebase_app_distribution && bundle exec fastlane add_plugin firebase_app_distribution
 

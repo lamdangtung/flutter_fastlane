@@ -5,37 +5,37 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000202">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000167">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: sh increase_build_number.sh" time="0.020722">
+      <testcase classname="fastlane.lanes" name="1: sh increase_build_number.sh" time="0.022292">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: flutter packages get" time="1.005397">
+      <testcase classname="fastlane.lanes" name="2: flutter packages get" time="1.100643">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: flutter clean" time="7.586516">
+      <testcase classname="fastlane.lanes" name="3: flutter clean" time="5.973127">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: flutter build apk --release" time="23.20711">
+      <testcase classname="fastlane.lanes" name="4: flutter build appbundle --release" time="26.889876">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: copy_artifacts" time="0.641476">
+      <testcase classname="fastlane.lanes" name="5: copy_artifacts" time="0.192169">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="6: firebase_app_distribution" time="13.672605">
+      <testcase classname="fastlane.lanes" name="6: make upload_app_android" time="60.290604">
         
       </testcase>
     
